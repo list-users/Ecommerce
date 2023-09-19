@@ -1,5 +1,9 @@
 package com.example.demo.entity;
 
-public interface RegistrationRepo {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface RegistrationRepo extends JpaRepository<RegistrationModel, Long> {
 
 }
