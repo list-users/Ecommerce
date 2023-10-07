@@ -4,8 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RegistrationRepo extends JpaRepository<RegistrationModel, Long> {
-	
-	
-	RegistrationModel findByEmail(String email);
+public interface LoginRepo extends JpaRepository<LoginModel, Long>{
+
 }

@@ -1,5 +1,6 @@
 package com.example.demoecommerceservice;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,12 @@ import com.example.demo.entity.RegistrationRepo;
 public class ECommerceServiceImpl implements ECommerceService {
 
 	@Autowired
-	private RegistrationRepo registrationRepo;
+	 RegistrationRepo registrationRepo;
 	
 	@Override
-	public ResponseEntity<?> saveregistration(Map<String, Object> param) throws Exception{
+	public ResponseEntity<?> saveregistration(Map<String, Object> param)throws Exception{
+		Map<String, Object> result = new HashMap<>();
+		try {
 		String name = (String)param.get("name");
 		String email = (String)param.get("email");
 		String password = (String)param.get("password");
@@ -29,8 +32,13 @@ public class ECommerceServiceImpl implements ECommerceService {
 		model.setEmail(email);
 		model.setPhoneno(phoneno);
 		registrationRepo.save(model);
-		return null;
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		result.put("success" , "success");
+		return new ResponseEntity("" ,HttpStatus.OK);
 	}
+
 	
 
 }
